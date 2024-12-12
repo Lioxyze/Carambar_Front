@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchAllBlagues = async () => {
   try {
     const response = await axios.get(
-      "https://malabar-a2097f13b22e.herokuapp.com/blague"
+      "https://malabar-1805984ed8b4.herokuapp.com/blague"
     );
     return response.data.blagues;
   } catch (error) {
