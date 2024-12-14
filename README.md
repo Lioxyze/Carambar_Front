@@ -1,26 +1,38 @@
-Frontend (Next.js)
-Description
-Le frontend du projet Carambar permet aux utilisateurs d'afficher et d'interagir avec les blagues en utilisant l'API du backend. Il est construit avec Next.js.
+# Carambar Front
 
-Technologies utilisées
-React
-Next.js
-Axios (pour les appels API)
-Installation et lancement du frontend
-Installez les dépendances :
+## Description
+Le frontend Carambar est une interface utilisateur déployée sur [Vercel](https://vercel.com/) qui permet d'interagir avec l'API Carambar pour consulter et afficher des blagues.
 
-bash
-Copier le code
-cd Carambar_Front
+## Déploiement
+Le frontend est déployé sur Vercel.
+- [Lien vers le site](https://carambar-front.vercel.app)
+
+## Installation locale
+1. Clonez le repository :
+```bash
+https://github.com/Lioxyze/Carambar_Front.git
+```
+2. Installez les dépendances :
+```bash
 npm install
-Lancez le serveur de développement :
-
-bash
-Copier le code
+```
+3. Lancez l'application en mode développement :
+```bash
 npm run dev
-L'interface sera disponible sur http://localhost:3000.
+```
+4. Accédez à l'application à l'adresse suivante :
+```bash
+http://localhost:3000
+```
 
-Déploiement en ligne
-Le frontend est déployé sur Vercel :
+## Fonctionnalités
+- Consulter toutes les blagues.
+- Consulter une blague spécifique.
+- Accéder à une blague aléatoire.
 
-Voir l'interface utilisateur en ligne
+---
+
+## Liens utiles
+- [Repo GitHub Backend](https://github.com/Lioxyze/Carambar_Back)
+- [Repo GitHub Frontend](https://github.com/Lioxyze/Carambar_Front)
+- [Documentation Swagger](https://malabar-1805984ed8b4.herokuapp.com/api-docs#/)
