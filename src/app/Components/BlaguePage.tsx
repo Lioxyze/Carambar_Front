@@ -113,7 +113,7 @@ export default function Home() {
                   key={blague.id}
                   className="bg-pink-100 p-4 rounded-lg shadow-md"
                 >
-                  <h2 className="text-xl font-semibold mb-2 text-pink-700">
+                  <h2 className="text-xl font-semibold mb-2 text-pink-400">
                     {blague.blagues}
                   </h2>
                   <p className="text-lg text-gray-600">{blague.reponse}</p>
