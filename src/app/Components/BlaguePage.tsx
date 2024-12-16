@@ -8,6 +8,7 @@ import { fetchAllBlagues } from "../Services/Blague";
 export default function Home() {
   const [blagues, setBlagues] = useState<Blague[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [randomBlague, setRandomBlague] = useState<Blague | null>(null);
 
   // Fonction pour récupérer toutes les blagues
   const handleFetchAllBlagues = async () => {
@@ -17,6 +18,20 @@ export default function Home() {
       setBlagues(fetchedBlagues);
     } catch (error) {
       console.error("Error fetching blagues:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fonction pour récupérer une blague aléatoire
+  const handleFetchRandomBlague = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/random-blague"); // End-point API pour récupérer une blague aléatoire
+      const fetchedRandomBlague = await response.json();
+      setRandomBlague(fetchedRandomBlague);
+    } catch (error) {
+      console.error("Error fetching random blague:", error);
     } finally {
       setLoading(false);
     }
@@ -69,22 +84,42 @@ export default function Home() {
           Obtenir toutes les blagues
         </button>
 
+        {/* Bouton pour récupérer une blague aléatoire */}
+        <button
+          onClick={handleFetchRandomBlague} // Appel de la fonction pour la blague aléatoire
+          className="px-6 py-3 bg-pink-600 text-white rounded-full text-lg hover:bg-pink-700 transition mb-6"
+        >
+          Obtenir une blague aléatoire
+        </button>
+
         {/* Affichage des blagues */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {loading ? (
             <p className="text-xl text-gray-500">Chargement...</p>
           ) : (
-            blagues.map((blague) => (
-              <div
-                key={blague.id}
-                className="bg-pink-100 p-4 rounded-lg shadow-md"
-              >
-                <h2 className="text-xl font-semibold mb-2 text-pink-700">
-                  {blague.blagues}
-                </h2>
-                <p className="text-lg text-gray-600">{blague.reponse}</p>
-              </div>
-            ))
+            <>
+              {randomBlague && (
+                <div className="bg-pink-100 p-4 rounded-lg shadow-md mb-4">
+                  <h2 className="text-xl font-semibold mb-2 text-pink-700">
+                    {randomBlague.blagues}
+                  </h2>
+                  <p className="text-lg text-gray-600">
+                    {randomBlague.reponse}
+                  </p>
+                </div>
+              )}
+              {blagues.map((blague) => (
+                <div
+                  key={blague.id}
+                  className="bg-pink-100 p-4 rounded-lg shadow-md"
+                >
+                  <h2 className="text-xl font-semibold mb-2 text-pink-700">
+                    {blague.blagues}
+                  </h2>
+                  <p className="text-lg text-gray-600">{blague.reponse}</p>
+                </div>
+              ))}
+            </>
           )}
         </div>
       </main>
