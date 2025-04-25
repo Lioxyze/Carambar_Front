@@ -6,7 +6,6 @@ Le frontend Carambar est une interface utilisateur déployée sur [Vercel](https
 ## Déploiement
 Le frontend est déployé sur Vercel.
 - [Lien vers le site](https://carambar-front-ten.vercel.app/)
-
 ## Installation locale
 1. Clonez le repository :
 ```bash
